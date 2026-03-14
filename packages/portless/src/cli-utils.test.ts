@@ -139,12 +139,12 @@ describe("constants", () => {
     expect(PRIVILEGED_PORT_THRESHOLD).toBe(1024);
   });
 
-  it("SYSTEM_STATE_DIR is /tmp/portless", () => {
-    expect(SYSTEM_STATE_DIR).toBe("/tmp/portless");
+  it("SYSTEM_STATE_DIR uses temp directory", () => {
+    expect(SYSTEM_STATE_DIR).toBe(path.join(os.tmpdir(), "portless"));
   });
 
   it("USER_STATE_DIR is in home directory", () => {
-    expect(USER_STATE_DIR).toBe(`${os.homedir()}/.portless`);
+    expect(USER_STATE_DIR).toBe(path.join(os.homedir(), ".portless"));
   });
 });
 

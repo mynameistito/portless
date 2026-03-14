@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { execFileSync } from "node:child_process";
 import * as fs from "node:fs";
+import * as os from "node:os";
 import * as path from "node:path";
 import {
   sanitizeForHostname,
@@ -115,7 +116,7 @@ describe("inferProjectName", () => {
   let tmpDir: string;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(process.env.TMPDIR || "/tmp", "portless-test-"));
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "portless-test-"));
   });
 
   afterEach(() => {
@@ -193,7 +194,7 @@ describe("detectWorktreePrefix", () => {
   let tmpDir: string;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(process.env.TMPDIR || "/tmp", "portless-test-"));
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "portless-test-"));
   });
 
   afterEach(() => {
@@ -212,7 +213,8 @@ describe("detectWorktreePrefix", () => {
     const gitdir = path.join(tmpDir, "fake-bare.git", "worktrees", worktreeName);
     fs.mkdirSync(gitdir, { recursive: true });
     fs.writeFileSync(path.join(gitdir, "HEAD"), `ref: refs/heads/${branch}\n`);
-    fs.writeFileSync(path.join(dir, ".git"), `gitdir: ${gitdir}\n`);
+    // Git expects forward slashes in .git file, even on Windows
+    fs.writeFileSync(path.join(dir, ".git"), `gitdir: ${gitdir.split(path.sep).join("/")}\n`);
   }
 
   it("returns null for a main checkout (.git directory)", () => {

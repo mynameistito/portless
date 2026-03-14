@@ -170,6 +170,11 @@ describe("ensureCerts", () => {
   });
 
   it("sets restrictive permissions on key files", () => {
+    // Windows doesn't support Unix-style file permissions
+    if (process.platform === "win32") {
+      return;
+    }
+
     const result = ensureCerts(tmpDir);
 
     const caKeyPath = path.join(tmpDir, "ca-key.pem");

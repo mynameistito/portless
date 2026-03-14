@@ -150,7 +150,7 @@ PORTLESS=0 pnpm dev              # Bypasses proxy, uses default port
 # Proxy control
 portless proxy start             # Start the proxy (port 1355, daemon)
 portless proxy start --https     # Start with HTTP/2 + TLS
-portless proxy start -p 80       # Start on port 80 (requires sudo)
+portless proxy start -p 80       # Start on port 80 (requires sudo on macOS/Linux)
 portless proxy start --foreground  # Start in foreground (for debugging)
 portless proxy stop              # Stop the proxy
 ```
@@ -251,4 +251,4 @@ pnpm format           # Format all files with Prettier
 ## Requirements
 
 - Node.js 20+
-- macOS or Linux
+- macOS, Linux, or Windows
