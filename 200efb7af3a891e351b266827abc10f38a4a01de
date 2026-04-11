@@ -1,0 +1,25 @@
+packages/portless/src/certs.test.ts
+  5921fce4fb2ae350 93-94
+packages/portless/src/certs.ts
+  5921fce4fb2ae350 5,64-67,73-129,131-161,163-164,166-170,173-209,213-214,216-235,237-243,245-257,259-293,298-299,301,303-312,321-322,328-349,351-354,365,367,373-402,404-407,409-412,490,497,665-666,683-686,688-692,700,702,705-725,728-729,732,909,1055,1063,1074
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "200efb7af3a891e351b266827abc10f38a4a01de",
+  "prompts": {
+    "5921fce4fb2ae350": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8200a0d8-0348-486c-bc63-683b9a95ebc6",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Tito",
+      "messages": [],
+      "total_additions": 1000,
+      "total_deletions": 933,
+      "accepted_lines": 355,
+      "overriden_lines": 6
+    }
+  }
+}
